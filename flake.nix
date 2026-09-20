@@ -30,7 +30,7 @@
       };
 
       overlays.default = final: prev: {
-        glimpse = self.packages.${final.system}.glimpse;
+        glimpse = self.packages.${final.stdenv.hostPlatform.system}.glimpse;
       };
     };
 }

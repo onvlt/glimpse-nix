@@ -71,7 +71,7 @@ let
       pam
       geoclue2
     ]
-    ++ lib.optionals stdenv.isLinux [
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
       wayland
     ];
 
