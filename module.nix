@@ -17,7 +17,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.glimpse.enableCoreServices = lib.mkDefault true;
 
-    programs.geoclue2.enable = cfg.enableCoreServices;
+    services.geoclue2.enable = cfg.enableCoreServices;
 
     systemd.user.services.glimpse-shell = {
       after = [
