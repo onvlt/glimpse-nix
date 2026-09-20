@@ -14,7 +14,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.services.glimpse-shell = {
+    systemd.user.services.glimpse-shell = {
       after = [
         "graphical-session.target"
         "glimpse-wallpaper.service"
@@ -45,7 +45,7 @@ in
       };
     };
 
-    systemd.services.glimpse-wallpaper = {
+    systemd.user.services.glimpse-wallpaper = {
       after = [ "graphical-session.target" ];
       description = "Glimpse wallpaper";
       documentation = [ "https://github.com/alex-oleshkevich/glimpse" ];
@@ -72,7 +72,7 @@ in
       };
     };
 
-    systemd.services.glimpse-lock = {
+    systemd.user.services.glimpse-lock = {
       after = [ "graphical-session.target" ];
       description = "Glimpse lock screen";
       documentation = [ "https://github.com/alex-oleshkevich/glimpse" ];
