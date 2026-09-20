@@ -9,11 +9,16 @@ let
 in
 {
   options.programs.glimpse = {
-    enable = lib.mkEnableOption "glimpse";
+    enable = lib.mkEnableOption "Glimpse";
+    enableCoreServices = lib.mkEnableOption "core Glimpse services like geoclue etc";
     package = lib.mkPackageOption pkgs "glimpse" { };
   };
 
   config = lib.mkIf cfg.enable {
+    programs.glimpse.enableCoreServices = lib.mkDefault true;
+
+    programs.geoclue2.enable = cfg.enableCoreServices;
+
     systemd.user.services.glimpse-shell = {
       after = [
         "graphical-session.target"
